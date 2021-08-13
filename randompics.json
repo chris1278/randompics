@@ -1,7 +1,7 @@
 {
 	"stable": {
 		"1.0": {
-			"current": "1.0.2",
+			"current": "1.0.1",
 			"download": "https://github.com/chris1278/randompics",
 			"announcement": "https://www.phpbb.de/community/viewtopic.php?f=149&p=1412994#p1412994",
 			"eol": null,
