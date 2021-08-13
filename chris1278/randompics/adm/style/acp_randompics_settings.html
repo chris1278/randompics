@@ -1,0 +1,44 @@
+{% INCLUDECSS 'css/randompics_acp.css' %}
+{% INCLUDE 'overall_header.html' %}
+
+<a name="maincontent"></a>
+
+	<h1 class="randompics-page-title">{{ lang('ACP_RANDOMPICS_PAGE_TITLE') }}	</h1>
+	<p>{{ lang('ACP_RANDOMPICS_PAGE_TITLE_EXPLAIN') }}</p>
+	
+	<dl class="randompics-permission-title">{{ lang('ACP_RANDOMPICS_PERM_TITLE') }}</dl>
+	<fieldset class="randompics-permission-info">
+		{{ lang('ACP_RANDOMPICS_PERMISSION_BEFORE') }}<a href="{U_USER_PERMISSIONS}"><strong>{{ lang('ACP_RANDOMPICS_USERS_PERMISSIONS') }}</strong></a> {{ lang('ACP_RANDOMPICS_ANDOR') }} <a href="{U_GROUP_PERMISSIONS}"><strong>{{ lang('ACP_RANDOMPICS_GROUPS_PERMISSIONS') }}</strong></a>{{ lang('ACP_RANDOMPICS_PERMISSION_AFTER') }}
+	</fieldset>
+	<br>
+	<dl class="randompics-set-title">{{ lang('ACP_RANDOMPICS_SET_TITLE') }}</dl>
+	<form id="acp_rm" method="post" action="{U_ACTION}">
+	<fieldset>
+		<dl>
+			<dt><label for="random_function">{{ lang('RANDOM_FUNCTION') }} {{ lang('COLON') }}</label><br /><span>{{ lang('RANDOM_FUNCTION_EXPLAIN') }}</span></dt>
+			<dd>
+				<select name="random_function" id="random_function">
+					<option value="1"{% if RANDOM_FUNCTION == 1 %} selected="selected"{% endif %}>{{ lang('RANDOM_FUNCTION_1') }}</option>
+					<option value="2"{% if RANDOM_FUNCTION == 2 %} selected="selected"{% endif %}>{{ lang('RANDOM_FUNCTION_2') }}</option>
+					<option value="3"{% if RANDOM_FUNCTION == 3 %} selected="selected"{% endif %}>{{ lang('RANDOM_FUNCTION_3') }}</option>
+					<option value="4"{% if RANDOM_FUNCTION == 4 %} selected="selected"{% endif %}>{{ lang('RANDOM_FUNCTION_4') }}</option>					
+				</select>
+			</dd>
+		</dl>
+		{% if RANDOM_FUNCTION == 3 or  RANDOM_FUNCTION == 4 %} 
+		<dl>
+			<dt><label for="slidertime">{{ lang('SLIDERTIME') }}{{ lang('COLON') }}</label><br><span>{{ lang('SLIDERTIME_EXPLAIN') }}</span></dt>
+			<dd><input type="text" name="slidertime" id="slidertime" maxlength="255" size="40" value="{SLIDERTIME}"/></input></dd>
+		</dl>
+		{% endif %}
+	</fieldset>
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+	</p>
+
+	{S_FORM_TOKEN}
+
+	
+</form>
+{% INCLUDE 'overall_footer.html' %}

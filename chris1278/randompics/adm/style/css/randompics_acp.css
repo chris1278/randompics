@@ -1,0 +1,33 @@
+/**
+*
+* Real-time statistics with Revolvermaps Extension for the phpBB Forum Software package.
+*
+* @copyright (c) 2020 (Christian-Esch.de)
+* @license GNU General Public License, version 2 (GPL-2.0-only)
+*
+*/
+
+fieldset {
+	border-radius: 10px;
+}
+
+.randompics-permission-title, .randompics-set-title, .randompics-infobox-title {
+	font-size: 1.4em;
+	font-style: italic;
+	text-align:center;
+	color: #bf1b1b;
+	line-height: 1.2em;
+}
+.randompics-permission-info {
+	text-align: center;
+}
+
+
+.randompics-page-title, .randompics-info-page-title {
+	font-size: 2.4em;
+}
+
+.show-randompics-all {
+	font-size: 1em;
+	font-weight: bold;
+}

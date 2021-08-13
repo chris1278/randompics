@@ -1,0 +1,50 @@
+<script type="text/javascript">
+var hintergrund = {{ RANDOMPIC1|json_encode() }};					//Übernahme aller Bildpfade auf dem Server
+var adm_func = {{ RANDOM_FUNCTION|json_encode() }};					//Übernahme der im ACP ausgewählten Funktion
+var adm_time = {{ SLIDERTIME|json_encode() }}*1000;					//Übernahme des im ACP eingestellten Intervalls und Umwandlung in Millisekunden
+//Wenn Funktion 1 -> 'Bei jedem Refresh ein zufälliges HGB' ausgewählt ist
+if(adm_func == 1){
+	var rand = Math.floor(Math.random()*hintergrund.length);		//Generierung Zufalssindex
+	var rValue = hintergrund[rand];									//Übernahme Zufallspfad
+	document.getElementById('phpbb').style.backgroundImage = 'url('+ rValue +')';	//Änderung HGB
+}
+//Wenn Funktion 2 -> 'Bei jedem Refresh ein Reihenfolgebild' ausgewählt ist
+if(adm_func == 2){
+	a = parseInt(sessionStorage.getItem('HGB'));					//Auslesen des aktuellen Wertes im SessionStorage
+	e = hintergrund.length -1;										//Höchsten Wert für SessionStorage festlegen
+	if (a >= 0 && a < e) {											//Prüfung, ob bereits ein gültiger Wert im SessionStorage vorhanden ist
+		i = a + 1;													//Wert für nächstes Bild erhöhen
+		document.getElementById('phpbb').style.backgroundImage = 'url('+ hintergrund[i] +')'; //HGB ändern
+		sessionStorage.setItem('HGB',i);							//SessionStorage auf aktualisierten Wert setzen
+	} else {
+		i = 0;														//Reihenfolge neu beginnen
+		sessionStorage.setItem('HGB', i);							//Reset des SessionStorage
+		document.getElementById('phpbb').style.backgroundImage = 'url('+ hintergrund[i] +')'; //HGB ändern
+	}
+}
+//Wenn Funktion 3 -> 'Bei jedem Refresh und nach Intervall zufällig wechselndes Hintergrundbild' ausgewählt ist
+if(adm_func == 3){
+	var rand = Math.floor(Math.random()*hintergrund.length);		//Generierung Zufallsindex
+	var rValue = hintergrund[rand];									//Übernahme Zufallspfad
+	document.getElementById('phpbb').style.backgroundImage = 'url('+ rValue +')';  //HGB ändern
+	setInterval(intervallhgb, adm_time);							//Intervallaufruf der Funktion zum ändern der künftigen HGB
+}
+//Wenn Funktion 4 -> 'Bei jedem Refresh und nach Intervall ein Reihenfolgebild' ausgewählt ist
+if(adm_func == 4){
+	var i = 0;														//Start setzen (verbesserungswürdig, da immer bei Null bei Refresh)
+	document.getElementById('phpbb').style.backgroundImage = 'url('+ hintergrund[i] +')';  //erstes HGB einstellen
+	setInterval(looper,adm_time);									//Intervallaufruf der Funktion zum ändern der künftigen HGB
+	}
+function looper(){													//Reihenfolgefunktion
+	document.getElementById('phpbb').style.backgroundImage = 'url('+ hintergrund[i] +')';  //HGB ändern
+	i++;															//nächsten Index
+	if (i == hintergrund.length) {									//Höchstgrenze Indexwert prüfen
+		i = 0;														//Reset Indexwert bei Erreichen der Höchstgrenze
+		}
+}
+function intervallhgb(){											//Intervallfunktion
+	var rand = Math.floor(Math.random()*hintergrund.length);		//Zufallsindex generieren
+	var rValue = hintergrund[rand];									//Indexpfad auslesen
+	document.getElementById('phpbb').style.backgroundImage = 'url('+ rValue +')';  //HGB ändern
+}
+</script>

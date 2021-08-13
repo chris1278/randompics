@@ -1,0 +1,11 @@
+services:
+    chris1278.randompics.listener:
+        class: chris1278\randompics\event\listener
+        arguments:
+            - '@auth'
+            - '@config'
+            - '@template'
+            - '@language'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }
