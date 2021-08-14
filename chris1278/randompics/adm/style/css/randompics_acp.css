@@ -1,6 +1,6 @@
 /**
 *
-* Real-time statistics with Revolvermaps Extension for the phpBB Forum Software package.
+* Randompics Extension for the phpBB Forum Software package.
 *
 * @copyright (c) 2020 (Christian-Esch.de)
 * @license GNU General Public License, version 2 (GPL-2.0-only)
@@ -18,7 +18,7 @@ fieldset {
 	color: #bf1b1b;
 	line-height: 1.2em;
 }
-.randompics-permission-info {
+.randompics-permission-info, .randompics-info {
 	text-align: center;
 }
 
