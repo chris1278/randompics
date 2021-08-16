@@ -47,7 +47,7 @@ class acp_module extends \phpbb\db\migration\migration
 
 			array('module.remove', array(
 				'acp',
-				'ACP_RANDOMPICSM',
+				'ACP_RANDOMPICS',
 				array(
 					'module_basename'	=> '\chris1278\randompics\acp\randompics_module',
 				),
